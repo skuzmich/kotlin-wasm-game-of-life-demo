@@ -6,3 +6,7 @@ config.devServer.open = {
         ],
     }
 }
+
+config.devServer.static.push(
+    __dirname + "/kotlin/"
+)

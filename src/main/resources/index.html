@@ -2,10 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>JS Client</title>
+    <title>Kotlin/Wasm Game of Life</title>
 </head>
 <body>
+<canvas id="game" width="1000" height="1000"></canvas>
+<script>
+    const canvas = document.querySelector("#game")
+    const ctx = canvas.getContext("2d")
+</script>
 <script src="untitled.js"></script>
-<div id="root"></div>
 </body>
 </html>
