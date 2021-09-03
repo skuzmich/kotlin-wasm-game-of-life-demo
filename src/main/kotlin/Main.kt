@@ -21,26 +21,51 @@ fun benchmark() {
     }
 }
 
+val gliderGun = arrayOf(
+    "........................O",
+    "......................O.O",
+    "............OO......OO............OO",
+    "...........O...O....OO............OO",
+    "OO........O.....O...OO",
+    "OO........O...O.OO....O.O",
+    "..........O.....O.......O",
+    "...........O...O",
+    "............OO"
+)
 
+val gliderGuns: String = run {
+    val numGunsX = 6
+    val numGunsY = 6
 
-const val gliderGun =
-"""........................O
-......................O.O
-............OO......OO............OO
-...........O...O....OO............OO
-OO........O.....O...OO
-OO........O...O.OO....O.O
-..........O.....O.......O
-...........O...O
-............OO"""
+    var result = ""
+
+    val gunMaxLen = gliderGun.maxOf { it.length }
+    for (row in gliderGun) {
+        repeat(numGunsX) {
+            result += row
+            repeat(gunMaxLen - row.length + 2) {
+                result += "."
+            }
+        }
+        result += "\n"
+    }
+
+    repeat(numGunsY) {
+        repeat(28) { result += "\n" }
+        for (x in gliderGun) {
+            result += x + "\n"
+        }
+    }
+    result
+}
 
 
 fun main() {
     if (!initialized) {
         setUp()
-        gameField.initGameField(gliderGun)
+        gameField.initGameField(gliderGuns)
         initialized = true
-        benchmark()
+        //benchmark()
         gameField.drawGameField()
     }
     gameStep()
@@ -136,14 +161,14 @@ fun performanceNow(): Double =
 //    js("performance.now()")
 
 @JsFun("""
-    (isDead, x, y, width, height) => {
-         ctx.fillStyle = isDead ? 'red' : 'green';
+    (isAlive, x, y, width, height) => {
+         ctx.fillStyle = isAlive ? 'white' : 'black';
          ctx.fillRect(x, y, width, height);
     }
 """)
-fun fill(isDead: Boolean, x: Int, y: Int, width: Int, height: Int) {
+fun fill(isAlive: Boolean, x: Int, y: Int, width: Int, height: Int) {
 //    js("""
-//         ctx.fillStyle = isDead ? 'red' : 'green';
+//         ctx.fillStyle = isAlive ? 'white' : 'black';
 //         ctx.fillRect(x, y, width, height);
 //""")
 }
