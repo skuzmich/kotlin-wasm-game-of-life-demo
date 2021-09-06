@@ -1,3 +1,5 @@
+// noinspection JSUnresolvedVariable
+
 config.devServer.open = {
     app: {
         name: 'google chrome',
@@ -10,3 +12,5 @@ config.devServer.open = {
 config.devServer.static.push(
     __dirname + "/kotlin/"
 )
+
+config.output = {}

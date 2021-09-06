@@ -5,9 +5,10 @@ pluginManagement {
     resolutionStrategy {
     }
     repositories {
+        maven { url = uri("kotlin-build") }
         mavenLocal()
         mavenCentral()
     }
 }
 
-rootProject.name = "untitled"
+rootProject.name = "game_of_life"

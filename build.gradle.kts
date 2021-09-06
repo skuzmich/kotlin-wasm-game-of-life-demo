@@ -2,29 +2,29 @@ plugins {
     kotlin("js")
 }
 
-group = "me.user"
-version = "1.0-SNAPSHOT"
-
 repositories {
+    maven { url = uri("kotlin-build") }
     mavenLocal()
     mavenCentral()
 }
 
+val useWasm = true
+
 dependencies {
-    implementation(kotlin("stdlib-wasm"))
+    implementation(kotlin("stdlib-" + if (useWasm) "wasm" else "js"))
 }
 
 kotlin {
     js(IR) {
         binaries.executable()
         browser {
-
         }
     }
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>() {
+tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>> {
     kotlinOptions {
-        freeCompilerArgs += listOf("-Xwasm")
+        if (useWasm)
+            freeCompilerArgs = freeCompilerArgs + listOf("-Xwasm")
     }
 }

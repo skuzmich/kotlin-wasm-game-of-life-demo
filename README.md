@@ -1,4 +1,4 @@
-1. Install kotlin branch `skuzmich/wasm-broser-support-wip` to Maven local.
+1. Install kotlin branch `rr/skuzmich/wasm-js-interop-wip` to Maven local.
 
 ```
 ./gradlew install --parallel
