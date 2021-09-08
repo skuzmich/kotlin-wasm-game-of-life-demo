@@ -16,7 +16,10 @@ class BooleanGrid(
         return storage[storageIndex(x, y)]
     }
 
-    // TODO: Comment with examples
+    /**
+     * Fill the grid portion with data from given string.
+     * '.' character corresponds to false, everything else is true.
+     */
     fun fillFromString(
         text: String,
         offsetX: Int = 0,
