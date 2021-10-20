@@ -1,30 +1,35 @@
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
+
 plugins {
-    kotlin("js")
+    kotlin("multiplatform")
 }
 
 repositories {
-    maven { url = uri("kotlin-build") }
     mavenLocal()
     mavenCentral()
 }
 
-val useWasm = true
-
-dependencies {
-    implementation(kotlin("stdlib-" + if (useWasm) "wasm" else "js"))
-}
-
 kotlin {
-    js(IR) {
+    wasm {
+        moduleName = "game-of-life"
         binaries.executable()
         browser {
+            commonWebpackConfig {
+                devServer = KotlinWebpackConfig.DevServer(
+                    open = mapOf(
+                        "app" to mapOf(
+                            "name" to "google chrome",
+                            "arguments" to listOf(
+                                "--js-flags=" +
+                                        "--experimental-wasm-typed-funcref " +
+                                        "--experimental-wasm-gc " +
+                                        "--experimental-wasm-eh"
+                            )
+                        )
+                    ),
+                    static = devServer?.static
+                )
+            }
         }
-    }
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>> {
-    kotlinOptions {
-        if (useWasm)
-            freeCompilerArgs = freeCompilerArgs + listOf("-Xwasm")
     }
 }

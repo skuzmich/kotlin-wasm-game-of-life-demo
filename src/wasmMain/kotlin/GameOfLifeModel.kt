@@ -1,6 +1,6 @@
 class GameOfLifeModel(
-    val sizeX: Int,
-    val sizeY: Int
+    private val sizeX: Int,
+    private val sizeY: Int
 ) {
 
     var grid = BooleanGrid(sizeX, sizeY)

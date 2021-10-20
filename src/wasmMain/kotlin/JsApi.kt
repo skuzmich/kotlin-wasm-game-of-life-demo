@@ -1,3 +1,5 @@
+@file:Suppress("NON_EXPORTABLE_TYPE", "EXPERIMENTAL_IS_NOT_ENABLED")
+@file:OptIn(ExperimentalJsExport::class)
 
 @JsExport
 fun createGameOfLife(canvas: JsCanvas): GameOfLife {
