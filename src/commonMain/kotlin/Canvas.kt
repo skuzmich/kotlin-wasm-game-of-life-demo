@@ -1,25 +1,27 @@
 class Canvas(canvas: JsCanvas) {
-    private val context: JsCanvasContext = getCanvas2dContext(canvas)
-    val width = getWidth(canvas)
-    val height = getHeight(canvas)
+    private val context: JsCanvasContext = canvas.getContext("2d")
+    val width = canvas.width
+    val height = canvas.height
 
     fun fillRect(value: Boolean, x: Int, y: Int, width: Int, height: Int) {
-        setContextFillStyle(context, value)
-        contextFillRect(context, x, y, width, height)
+        context.fillStyle = if (value) "#a97bff" else "#27282c"
+        context.fillRect(x, y, width, height)
     }
 }
 
-external interface JsCanvas
-external interface JsCanvasContext
+external interface JsCanvas {
+    val width: Int
+    val height: Int
 
-external fun getCanvas2dContext(canvas: JsCanvas): JsCanvasContext
-external fun getWidth(canvas: JsCanvas): Int
-external fun getHeight(canvas: JsCanvas): Int
-external fun setContextFillStyle(context: JsCanvasContext, value: Boolean)
-external fun contextFillRect(
-    context: JsCanvasContext,
-    x: Int,
-    y: Int,
-    width: Int,
-    height: Int,
-)
+    fun getContext(contextType: String): JsCanvasContext
+}
+
+external interface JsCanvasContext {
+    var fillStyle: String
+    fun fillRect(
+        x: Int,
+        y: Int,
+        width: Int,
+        height: Int,
+    )
+}

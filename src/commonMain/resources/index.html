@@ -7,27 +7,6 @@
 </head>
 <body>
 <canvas id="game" width="1000" height="1000"></canvas>
-<script>
-    function getCanvas2dContext(canvas) {
-        return canvas.getContext("2d");
-    }
-
-    function getWidth(canvas) {
-        return canvas.width;
-    }
-
-    function getHeight(canvas) {
-        return canvas.height;
-    }
-
-    function setContextFillStyle(ctx, value) {
-        ctx.fillStyle = value ? '#a97bff' : '#27282c';
-    }
-
-    function contextFillRect(ctx, x, y, width, height) {
-        ctx.fillRect(x, y, width, height);
-    }
-</script>
 <script src="game_of_life.js"></script>
 <script>
     Promise.resolve(game_of_life).then((module) => {
