@@ -8,20 +8,3 @@ class Canvas(canvas: JsCanvas) {
         context.fillRect(x, y, width, height)
     }
 }
-
-external interface JsCanvas {
-    val width: Int
-    val height: Int
-
-    fun getContext(contextType: String): JsCanvasContext
-}
-
-external interface JsCanvasContext {
-    var fillStyle: String
-    fun fillRect(
-        x: Int,
-        y: Int,
-        width: Int,
-        height: Int,
-    )
-}

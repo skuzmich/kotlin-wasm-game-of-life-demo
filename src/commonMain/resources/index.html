@@ -9,14 +9,14 @@
 <canvas id="game" width="1000" height="1000"></canvas>
 <script src="game_of_life.js"></script>
 <script>
-    Promise.resolve(game_of_life).then((module) => {
-        const canvas = document.querySelector("#game");
-        const exports = module.default ?? module;
-        const gameOfLife = exports.createGameOfLife(canvas);
-        window.setInterval(() => {
-            exports.stepGameOfLife(gameOfLife);
-        }, 10);
-    });
+    // Promise.resolve(game_of_life).then((module) => {
+    //     const canvas = document.querySelector("#game");
+    //     const exports = module.default ?? module;
+    //     const gameOfLife = exports.createGameOfLife(canvas);
+    //     window.setInterval(() => {
+    //         exports.stepGameOfLife(gameOfLife);
+    //     }, 10);
+    // });
 </script>
 </body>
 </html>
