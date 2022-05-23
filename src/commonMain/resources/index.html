@@ -30,8 +30,9 @@
 </script>
 <script src="game_of_life.js"></script>
 <script>
-    Promise.resolve(game_of_life.default).then((exports) => {
-        const canvas = document.querySelector("#game")
+    Promise.resolve(game_of_life).then((module) => {
+        const canvas = document.querySelector("#game");
+        const exports = module.default ?? module;
         const gameOfLife = exports.createGameOfLife(canvas);
         window.setInterval(() => {
             exports.stepGameOfLife(gameOfLife);
