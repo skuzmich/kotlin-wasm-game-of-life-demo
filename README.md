@@ -1,10 +1,11 @@
-1. Install kotlin branch `rr/skuzmich/wasm-js-interop-wip` to Maven local.
+# Kotlin/Wasm Game of Life
 
+## Run Kotlin/Wasm
 ```
-./gradlew install --parallel
+./gradlew wasmRun
 ```
 
-2.
+## Run Kotlin/JS
 ```
-./gradlew run
+./gradlew jsRun
 ```
